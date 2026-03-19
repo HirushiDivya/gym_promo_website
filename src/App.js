@@ -14,105 +14,16 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import Swal from "sweetalert2";
 import { Facebook, Twitter, Instagram, Music2 } from "lucide-react";
 
-const servicesData = [
-  {
-    id: 1,
-    title: "State-of-the-Art Equipment",
-    desc: "Train with the latest high-end fitness technology.",
-    icon: "Dumbbell",
-  },
-  {
-    id: 2,
-    title: "Personal Training",
-    desc: "One-on-one coaching tailored to your body goals.",
-    icon: "User",
-  },
-  {
-    id: 3,
-    title: "Group Classes",
-    desc: "High-energy sessions to stay motivated.",
-    icon: "Users",
-  },
-  {
-    id: 4,
-    title: "Nutrition & Wellness",
-    desc: "Expert dietary plans for transformation.",
-    icon: "ClipboardList",
-  },
-];
 
-const plansData = [
-  {
-    id: 1,
-    title: "Starter Membership",
-    price: "4500",
-    features: [
-      "Fully equipment gym",
-      "Locker room facility",
-      "Shower facility",
-    ],
-  },
-  {
-    id: 2,
-    title: "Active Pro Membership",
-    price: "6000",
-    features: [
-      "Everything in Basic",
-      "Group Fitness Classes",
-      "Personalized Workout Plan",
-    ],
-  },
-  {
-    id: 3,
-    title: "Ultimate Membership",
-    price: "8000",
-    features: [
-      "Everything in Pro",
-      "Personal Trainer sessions",
-      "Customized Nutrition",
-    ],
-  },
-];
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
-  const [searchTerm, setSearchTerm] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
   const [errors, setErrors] = useState({});
-
-  //search
-  const sortedServices = [...servicesData].sort((a, b) => {
-    const aMatch = a.title.toLowerCase().includes(searchTerm.toLowerCase());
-    const bMatch = b.title.toLowerCase().includes(searchTerm.toLowerCase());
-    return bMatch - aMatch; 
-  });
-
-  const sortedPlans = [...plansData].sort((a, b) => {
-    const aMatch =
-      a.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      a.price.includes(searchTerm);
-    const bMatch =
-      b.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      b.price.includes(searchTerm);
-    return bMatch - aMatch;
-  });
-
-  // Filter logic
-  const filteredServices = servicesData.filter(
-    (s) =>
-      s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      s.desc.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
-
-  const filteredPlans = plansData.filter(
-    (p) =>
-      p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.price.includes(searchTerm),
-  );
 
   //contct
   const handleChange = (e) => {
@@ -260,7 +171,7 @@ function App() {
           </div>
         </div>
       </nav>
-
+ 
       {/* --- secctions --- */}
       {/* --- Home Section --- */}
       <section id="home" className="hero-section">
@@ -271,9 +182,7 @@ function App() {
           </span>
           <input
             type="text"
-            placeholder="Search services or plans (e.g. Pro, Yoga, 4500)..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search services or plans (e.g. Pro, Yoga, )..."
           />
         </div>
         <div className="hero-logo-container">
@@ -354,6 +263,7 @@ function App() {
 
       {/* --- Features Section --- */}
       <section id="features" className="features-section">
+        
         <h2 className="section-title">PREMIUM FACILITIES</h2>
         <div className="features-grid">
           {/* Feature 1 */}
