@@ -23,7 +23,9 @@ Follow these steps to run the project on your local machine:
 git clone [https://github.com/HirushiDivya/fitness-website.git](https://github.com/HirushiDivya/fitness-website.git)
 ```
 cd fitness-website
+
 npm install
+
 npm start
 
 ## Live Link
