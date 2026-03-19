@@ -14,8 +14,11 @@ A high-performance, fully responsive promotional website built for a local fitne
 
 🛠️ Tech Stack
 Frontend: React.js (Functional Components & Hooks)
+
 Icons: Lucide-React
+
 Animations/Popups: SweetAlert2
+
 Styling: Custom CSS3 (Variables, Media Queries, Glassmorphism)
 
 📥 Setup Instructions
