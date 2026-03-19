@@ -425,7 +425,7 @@ section {
 /* Responsive for Mobile */
 @media (max-width: 768px) {
   .features-grid {
-    grid-template-columns: 1fr; /* Mobile ekedi 1k penwanawa */
+    grid-template-columns: 1fr; 
   }
 }
 
