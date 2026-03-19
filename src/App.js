@@ -12,16 +12,107 @@ import { Sun, Moon, Search } from "lucide-react";
 import { Dumbbell, User, Users, ClipboardList } from "lucide-react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Swal from "sweetalert2";
+import { Facebook, Twitter, Instagram, Music2 } from "lucide-react";
 
+const servicesData = [
+  {
+    id: 1,
+    title: "State-of-the-Art Equipment",
+    desc: "Train with the latest high-end fitness technology.",
+    icon: "Dumbbell",
+  },
+  {
+    id: 2,
+    title: "Personal Training",
+    desc: "One-on-one coaching tailored to your body goals.",
+    icon: "User",
+  },
+  {
+    id: 3,
+    title: "Group Classes",
+    desc: "High-energy sessions to stay motivated.",
+    icon: "Users",
+  },
+  {
+    id: 4,
+    title: "Nutrition & Wellness",
+    desc: "Expert dietary plans for transformation.",
+    icon: "ClipboardList",
+  },
+];
+
+const plansData = [
+  {
+    id: 1,
+    title: "Starter Membership",
+    price: "4500",
+    features: [
+      "Fully equipment gym",
+      "Locker room facility",
+      "Shower facility",
+    ],
+  },
+  {
+    id: 2,
+    title: "Active Pro Membership",
+    price: "6000",
+    features: [
+      "Everything in Basic",
+      "Group Fitness Classes",
+      "Personalized Workout Plan",
+    ],
+  },
+  {
+    id: 3,
+    title: "Ultimate Membership",
+    price: "8000",
+    features: [
+      "Everything in Pro",
+      "Personal Trainer sessions",
+      "Customized Nutrition",
+    ],
+  },
+];
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+  const [searchTerm, setSearchTerm] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
   const [errors, setErrors] = useState({});
+
+  //search
+  const sortedServices = [...servicesData].sort((a, b) => {
+    const aMatch = a.title.toLowerCase().includes(searchTerm.toLowerCase());
+    const bMatch = b.title.toLowerCase().includes(searchTerm.toLowerCase());
+    return bMatch - aMatch; 
+  });
+
+  const sortedPlans = [...plansData].sort((a, b) => {
+    const aMatch =
+      a.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      a.price.includes(searchTerm);
+    const bMatch =
+      b.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      b.price.includes(searchTerm);
+    return bMatch - aMatch;
+  });
+
+  // Filter logic
+  const filteredServices = servicesData.filter(
+    (s) =>
+      s.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      s.desc.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
+
+  const filteredPlans = plansData.filter(
+    (p) =>
+      p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      p.price.includes(searchTerm),
+  );
 
   //contct
   const handleChange = (e) => {
@@ -176,14 +267,13 @@ function App() {
         {/* Search Bar */}
         <div className="search-container">
           <span className="search-icon">
-            <Search
-              size={20}
-              color={isDarkMode ? "#f1b900" : "#ffffff"} 
-            />
+            <Search size={20} color={isDarkMode ? "#f1b900" : "#ffffff"} />
           </span>
           <input
             type="text"
-            placeholder="Search workout plans, Trainers, Services...."
+            placeholder="Search services or plans (e.g. Pro, Yoga, 4500)..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <div className="hero-logo-container">
@@ -324,6 +414,8 @@ function App() {
             </div>
           </div>
         </div>
+
+        
       </section>
 
       {/*--package section--*/}
@@ -460,6 +552,164 @@ function App() {
           Chat on WhatsApp
         </button>
       </section>
+
+      {/* --- Footer --- */}
+      <footer
+        style={{
+          backgroundColor: "#000",
+          color: "#fff",
+          padding: "40px 20px 20px",
+          fontFamily: "sans-serif",
+          borderTop: "1px solid #333",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1100px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gap: "40px",
+          }}
+        >
+          {/* Quick Links */}
+          <div>
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                marginBottom: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Quick Links
+            </h3>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                fontSize: "0.9rem",
+                color: "#ccc",
+                cursor: "pointer",
+                lineHeight: "2",
+              }}
+            >
+              <li onClick={() => scrollToSection("home")}>Home</li>
+              <li onClick={() => scrollToSection("about")}>About Us</li>
+              <li onClick={() => scrollToSection("features")}>
+                Programs / Services
+              </li>
+              <li onClick={() => scrollToSection("plan")}>Pricing Plans</li>
+              <li onClick={() => scrollToSection("contact")}>Contact</li>
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                marginBottom: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Support
+            </h3>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: 0,
+                fontSize: "0.9rem",
+                color: "#ccc",
+                lineHeight: "2",
+              }}
+            >
+              <li>Privacy Policy</li>
+              <li>Terms & Conditions</li>
+              <li>FAQ</li>
+              <li>Careers</li>
+            </ul>
+          </div>
+
+          {/* Get in Touch */}
+          <div>
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                marginBottom: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Get in Touch
+            </h3>
+            <div
+              style={{ fontSize: "0.9rem", color: "#ccc", lineHeight: "1.8" }}
+            >
+              <p>183 Gall Road, Kollupitiya</p>
+              <p>+94 345 9876</p>
+              <p>Fitness@gmail.com</p>
+              <p>Mon - Fri: 5 AM - 10 PM</p>
+            </div>
+          </div>
+
+          {/* Social Media */}
+          <div>
+            <h3
+              style={{
+                fontSize: "1.1rem",
+                marginBottom: "20px",
+                fontWeight: "bold",
+              }}
+            >
+              Social Media
+            </h3>
+            <div style={{ display: "flex", gap: "15px" }}>
+              {[
+                { Icon: Facebook, fill: true },
+                { Icon: Twitter, fill: true },
+                { Icon: Instagram, fill: false },
+                { Icon: Music2, fill: false },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  style={{
+                    backgroundColor: "#f1b900",
+                    color: "#000",
+                    width: "35px",
+                    height: "35px",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                  }}
+                >
+                  <item.Icon
+                    size={18}
+                    fill={item.fill ? "currentColor" : "none"}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div
+          style={{
+            maxWidth: "1100px",
+            margin: "40px auto 0",
+            paddingTop: "20px",
+            borderTop: "1px solid #333",
+            display: "flex",
+            justifyContent: "space-between",
+            color: "#777",
+            fontSize: "0.85rem",
+          }}
+        >
+          <p>Fitness Support Center</p>
+          <p>Copyright © 2026</p>
+        </div>
+      </footer>
     </div>
   );
 }
