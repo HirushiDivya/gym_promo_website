@@ -6,11 +6,69 @@ import imgB from "./b.webp";
 import imgC from "./c.webp";
 import imgD from "./d.avif";
 import imgE from "./about.webp";
+import map from "./map.png";
 import { Sun, Moon } from "lucide-react";
 import { Dumbbell, User, Users, ClipboardList } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import Swal from 'sweetalert2';
+
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [activeSection, setActiveSection] = useState("home");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({});
+
+  //contct
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+const sendToWhatsApp = () => {
+    let newErrors = {};
+    const nameRegex = /^[A-Za-z\s]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // Validation Logic
+    if (!formData.name || !formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (!nameRegex.test(formData.name)) {
+      newErrors.name = "Letters only, please";
+    }
+
+    if (!formData.email || !formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+
+    if (!formData.message || !formData.message.trim()) {
+      newErrors.message = "Message cannot be empty";
+    }
+
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length === 0) {
+      const phoneNumber = "94761758959"; 
+      const messageText = `*Inquiry from Website*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
+            Swal.fire({
+        title: 'Success!',
+        text: 'Your inquiry is ready to be sent.',
+        icon: 'success',
+        confirmButtonColor: '#f1b900', 
+        background: '#333', 
+        color: '#fff',      
+        timer: 2000,        
+        timerProgressBar: true,
+        willClose: () => {
+          window.open(`https://wa.me/${phoneNumber}?text=${messageText}`, "_blank");
+          setFormData({ name: "", email: "", message: "" }); 
+        }
+      });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -108,8 +166,7 @@ function App() {
         </div>
       </nav>
 
-      {/* --- SECTIONS --- */}
-
+      {/* --- secctions --- */}
       {/* --- Home Section --- */}
       <section id="home" className="hero-section">
         {/* Search Bar */}
@@ -136,9 +193,9 @@ function App() {
       </section>
 
       {/* --- About Section --- */}
-      <section id="about" className="content-section about-section grey-bg">
+      <section id="about" className="content-section about-section">
         <div className="about-container">
-          {/* Left Side: Image with Overlay Text */}
+          {/* Left Side */}
           <div
             className="about-image-card"
             style={{ backgroundImage: `url(${imgE})` }}
@@ -148,7 +205,7 @@ function App() {
             </div>
           </div>
 
-          {/* Right Side: Text & Stats */}
+          {/* Right Side Text+Stats */}
           <div className="about-content">
             <p className="mission-description">
               Our mission is to build a high-performance community where elite
@@ -261,8 +318,76 @@ function App() {
       </section>
 
       {/* --- Contact Section --- */}
-      <section id="contact" className="content-section grey-bg">
-        <h1>Contact Us</h1>
+      <section id="contact" className="contact-section">
+        <h2 className="contact-title">Ready To Start Your Journey?</h2>
+
+        <div className="contact-container">
+          {/* Left Side Form */}
+          <div className="contact-form">
+            <div className="input-group">
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              {errors.name && <span className="error-text">{errors.name}</span>}
+            </div>
+
+            <div className="input-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              {errors.email && (
+                <span className="error-text">{errors.email}</span>
+              )}
+            </div>
+
+            <div className="input-group">
+              <label>Message</label>
+              <textarea
+                name="message"
+                rows="4"
+                value={formData.message}
+                onChange={handleChange}
+              ></textarea>
+              {errors.message && (
+                <span className="error-text">{errors.message}</span>
+              )}
+            </div>
+          </div>
+
+          {/* Right Side Map, Info */}
+          <div className="contact-info">
+            <div className="map-placeholder">
+              <img src={map} alt="Location Map" />
+            </div>
+
+            <div className="info-details">
+              <div className="info-item">
+                <Phone size={24} color="#000000" />
+                <span>+94 345 9878</span>
+              </div>
+              <div className="info-item">
+                <Mail size={24} color="#000000" />
+                <span>Fitness@gmail.com</span>
+              </div>
+              <div className="info-item">
+                <MapPin size={24} color="#000000" />
+                <span>183 Gall Road, Kollupitiya</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button className="submit-btn" onClick={sendToWhatsApp}>
+          Chat on WhatsApp
+        </button>
       </section>
     </div>
   );
