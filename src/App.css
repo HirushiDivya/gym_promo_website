@@ -1,38 +1,333 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+section {
+  scroll-margin-top: 70px; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* -- Navbar - */
+.navbar {
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed; 
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 0 50px;
+  transition: background-color 0.3s ease;
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+.logo img { 
+  height: 80px; 
+  cursor: pointer; 
+}
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 50px;
+}
+.nav-item {
+  font-family: sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+
+  padding-bottom: 5px;
+  border-bottom: 3px solid transparent;
+}
+.nav-item:hover { 
+  color: #f1b900; 
+}
+.nav-item.active {
+  border-bottom: 3px solid #f1b900;
+  padding-bottom: 5px;
+  color: #f1b900;
+  font-weight: 700;
 }
 
-.App-header {
-  background-color: #282c34;
+
+/* --- Hero/Home section --- */
+.hero-section {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  gap: 0; 
+  padding-top: 110px; 
+  padding-bottom: 40px;
+  text-align: center;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 650px;
+  margin-bottom: -50px;
+  position: relative;  
+  z-index: 10;       
+}
+.search-container input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 15px;
+  margin-left: 10px;
+}
+.search-icon {
+  font-size: 18px;
+}
+.hero-logo-container img {
+  width: 600px;
+  max-height: auto;
+  height: auto;
+  display: block; 
+  margin: 0 auto
+}
+.hero-text-content h1 {
+  margin-top: -50px;
+  font-family: 'Arial Black', sans-serif;
+  font-size: 38px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.hero-text-content p {
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+
+
+/* ---Content section --- */
+.content-section {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  padding: 50px;
 }
 
-.App-link {
-  color: #61dafb;
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- Theme Toggle (Switch Type) --- */
+.nav-actions { 
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
+}
+.theme-toggle {
+  width: 55px;
+  height: 26px;
+  background-color: #f1b900;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  cursor: pointer;
+  position: relative;
+}
+.toggle-circle {
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  z-index: 2;
+}
+.move-right { 
+  transform: translateX(27px); 
+}
+.sun-icon-bg {
+  position: absolute;
+  right: 8px;
+  z-index: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.join-btn {
+  background-color: #f1b900;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
 }
+
+/* --- Theme Toggle (Circle)--- */
+.theme-toggle-simple {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.10s ease;
+}
+.theme-toggle-simple:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: rotate(-20deg); }
+  to { opacity: 1; transform: rotate(0deg); }
+}
+
+
+
+
+/* Dark Mode (Default) */
+.app-container.dark {
+  background-color: #000;
+  color: #fff;
+}
+.app-container.dark .navbar {
+  background-color: #000000;
+}
+.app-container.dark .nav-item {
+  color: #fff;
+}
+.app-container.dark .nav-item {
+  color: #fff;
+}
+.app-container.dark .nav-item.active {
+  color: #f1b900 !important;
+}
+.app-container.dark .content-section.grey-bg {
+  background-color: #1a1a1a;
+}
+/* Home/Hero section */
+.hero-section{
+   background: radial-gradient(circle, #4a4a4a 0%, #121212 100%);
+}
+.search-container{
+    background: rgba(0, 0, 0, 0.5);
+  border: 1.5px solid #f1b900;
+}
+.search-container input{
+    color: #fff;
+}
+.search-icon{
+    color: #f1b900;
+}
+.hero-text-content h1{
+    color: #f1b900;
+}
+.hero-text-content p {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+/* Light Mode */
+.app-container.light {
+  background-color: #ffffff;
+  color: #000;
+}
+.app-container.light .navbar {
+  background-color: #D9D9D9; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.app-container.light .nav-item {
+  color: #000000 !important; 
+  font-weight: 700;          
+  letter-spacing: 0.5px;    
+}
+.app-container.light .nav-item {
+  color: #000;
+}
+.app-container.light .nav-item.active {
+  color: #f1b900 !important;
+}
+.app-container.light .content-section.grey-bg {
+  background-color: #f4f4f4;
+}
+.app-container.light .theme-toggle-simple {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+/* Home/Hero section */
+.app-container.light .hero-section {
+    background: linear-gradient(
+        180deg, 
+        rgba(217, 165, 26, 0) 0%,    
+        rgba(217, 165, 26, 0.5) 100% 
+    ) !important;
+}
+.app-container.light .search-container {
+    background: rgba(180, 180, 180, 0.4) !important; 
+    border: 1.5px solid #C09B3E !important; 
+    backdrop-filter: blur(5px); 
+}
+.app-container.light .search-icon {
+    color: #f1b900 !important;
+}
+.app-container.light .search-container input {
+    color: #444 !important; 
+}
+.app-container.light .search-container input::placeholder {
+    color: #1c1b1b !important;
+    opacity: 0.8;
+}
+.app-container.light .hero-text-content h1{
+    color: #fff;
+}
+.app-container.light .hero-text-content p {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
