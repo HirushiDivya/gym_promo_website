@@ -5,6 +5,7 @@ import imgA from "./a.jpg";
 import imgB from "./b.webp";
 import imgC from "./c.webp";
 import imgD from "./d.avif";
+import imgE from "./about.webp";
 import { Sun, Moon } from "lucide-react";
 import { Dumbbell, User, Users, ClipboardList } from "lucide-react";
 function App() {
@@ -135,9 +136,64 @@ function App() {
       </section>
 
       {/* --- About Section --- */}
-      <section id="about" className="content-section grey-bg ">
-        <h1>About Us</h1>
-        <p>aa</p>
+      <section id="about" className="content-section about-section grey-bg">
+        <div className="about-container">
+          {/* Left Side: Image with Overlay Text */}
+          <div
+            className="about-image-card"
+            style={{ backgroundImage: `url(${imgE})` }}
+          >
+            <div className="about-image-overlay">
+              <h2>OUR MISSION</h2>
+            </div>
+          </div>
+
+          {/* Right Side: Text & Stats */}
+          <div className="about-content">
+            <p className="mission-description">
+              Our mission is to build a high-performance community where elite
+              fitness meets expert guidance. We are dedicated to providing a
+              world-class environment equipped with state-of-the-art technology
+              and professional coaching to empower every individual.
+            </p>
+            <p className="mission-description">
+              Transform your lifestyle, and help you achieve the ultimate
+              version of yourself through strength, discipline, and innovation.
+            </p>
+
+            {/* Stats Grid */}
+            <div className="stats-grid">
+              <div className="stat-card">
+                <div className="stat-border"></div>
+                <div className="stat-info">
+                  <h3>8 +</h3>
+                  <p>Years Excellence</p>
+                </div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-border"></div>
+                <div className="stat-info">
+                  <h3>500 +</h3>
+                  <p>Active Members</p>
+                </div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-border"></div>
+                <div className="stat-info">
+                  <h3>10 +</h3>
+                  <p>Expert Trainers</p>
+                </div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-border"></div>
+                <div className="stat-info">
+                  <h3>50 +</h3>
+                  <p>Modern Machines</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* --- Features Section --- */}
