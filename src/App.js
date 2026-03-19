@@ -7,10 +7,11 @@ import imgC from "./c.webp";
 import imgD from "./d.avif";
 import imgE from "./about.webp";
 import map from "./map.png";
-import { Sun, Moon } from "lucide-react";
+import packages from "./packages.jpg";
+import { Sun, Moon, Search } from "lucide-react";
 import { Dumbbell, User, Users, ClipboardList } from "lucide-react";
 import { Phone, Mail, MapPin } from "lucide-react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -27,7 +28,7 @@ function App() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const sendToWhatsApp = () => {
+  const sendToWhatsApp = () => {
     let newErrors = {};
     const nameRegex = /^[A-Za-z\s]+$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -51,21 +52,24 @@ const sendToWhatsApp = () => {
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      const phoneNumber = "94761758959"; 
+      const phoneNumber = "94761758959";
       const messageText = `*Inquiry from Website*%0A%0A*Name:* ${formData.name}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`;
-            Swal.fire({
-        title: 'Success!',
-        text: 'Your inquiry is ready to be sent.',
-        icon: 'success',
-        confirmButtonColor: '#f1b900', 
-        background: '#333', 
-        color: '#fff',      
-        timer: 2000,        
+      Swal.fire({
+        title: "Success!",
+        text: "Your inquiry is ready to be sent.",
+        icon: "success",
+        confirmButtonColor: "#f1b900",
+        background: "#333",
+        color: "#fff",
+        timer: 2000,
         timerProgressBar: true,
         willClose: () => {
-          window.open(`https://wa.me/${phoneNumber}?text=${messageText}`, "_blank");
-          setFormData({ name: "", email: "", message: "" }); 
-        }
+          window.open(
+            `https://wa.me/${phoneNumber}?text=${messageText}`,
+            "_blank",
+          );
+          setFormData({ name: "", email: "", message: "" });
+        },
       });
     }
   };
@@ -171,7 +175,12 @@ const sendToWhatsApp = () => {
       <section id="home" className="hero-section">
         {/* Search Bar */}
         <div className="search-container">
-          <span className="search-icon">🔍</span>
+          <span className="search-icon">
+            <Search
+              size={20}
+              color={isDarkMode ? "#f1b900" : "#ffffff"} 
+            />
+          </span>
           <input
             type="text"
             placeholder="Search workout plans, Trainers, Services...."
@@ -314,6 +323,68 @@ const sendToWhatsApp = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/*--package section--*/}
+      <section
+        id="plan"
+        className="pricing-section"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${packages})`,
+        }}
+      >
+        <div className="pricing-header">
+          <h2>Monthly Deals</h2>
+          <p>Choose Your Package</p>
+        </div>
+
+        <div className="pricing-grid">
+          {/* Basic  */}
+          <div className="price-card">
+            <h3>Starter Membership</h3>
+            <ul>
+              <li>✔ Fully equipment gym</li>
+              <li>✔ Shower & Changing room facilities</li>
+              <li>✔ Locker room facility</li>
+              <li>✔ Shower facility</li>
+              <li>✔ General gym floor access</li>
+              <li>✔ Free Initial fitness assessment</li>
+            </ul>
+            <div className="price-tag">Rs. 4500</div>
+          </div>
+
+          {/* Pro  */}
+          <div className="price-card highlighted">
+            <h3>Active Pro Membership</h3>
+            <ul>
+              <li>✔ Everything in Basic</li>
+              <li>✔ Group Fitness Classes (Yoga, Zumba, HIIT)</li>
+              <li>✔ Personalized Workout Plan</li>
+              <li>✔ Steam & Sauna Access</li>
+              <li>✔ Free guest pass (monthly 1)</li>
+            </ul>
+            <div className="price-tag">Rs. 6000</div>
+          </div>
+
+          {/* Ultimate  */}
+          <div className="price-card">
+            <h3>Ultimate Membership</h3>
+            <ul>
+              <li>✔ Everything in Pro</li>
+              <li>✔ Personal Trainer sessions (4 sessions per month)</li>
+              <li>✔ Customized Nutrition & Diet Plan</li>
+              <li>✔ Priority access to new equipment</li>
+              <li>✔ Complimentary gym t-shirt/supplements discount</li>
+            </ul>
+            <div className="price-tag">Rs. 8000</div>
+          </div>
+        </div>
+
+        <div className="pricing-dots">
+          <span></span>
+          <span className="active-dot"></span>
+          <span></span>
         </div>
       </section>
 
