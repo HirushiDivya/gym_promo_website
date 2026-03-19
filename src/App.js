@@ -106,28 +106,9 @@ function App() {
       {/* --- SECTIONS --- */}
 
       {/* --- Home Section --- */}
-      <section id="home" className="hero-section">
-        {/* Search Bar */}
-        <div className="search-container">
-          <span className="search-icon">🔍</span>
-          <input
-            type="text"
-            placeholder="Search workout plans, Trainers, Services...."
-          />
-        </div>
-        <div className="hero-logo-container">
-          <img src={logo} alt="Fitness Center Logo" />
-        </div>
-
-        {/* Text Content */}
-        <div className="hero-text-content">
-          <h1>
-            UNLEASH THE BEAST WITHIN.
-            <br />
-            PREMIER FITNESS FOR ALL.
-          </h1>
-          <p>Expert training and premium gear to reach your peak.</p>
-        </div>
+      <section id="home" className="content-section  ">
+        <h1>Home</h1>
+        <p>home</p>
       </section>
 
 

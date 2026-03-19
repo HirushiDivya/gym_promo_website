@@ -57,61 +57,6 @@ section {
 }
 
 
-/* --- Hero/Home section --- */
-.hero-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0; 
-  padding-top: 110px; 
-  padding-bottom: 40px;
-  text-align: center;
-}
-.search-container {
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  padding: 12px 20px;
-  width: 100%;
-  max-width: 650px;
-  margin-bottom: -50px;
-  position: relative;  
-  z-index: 10;       
-}
-.search-container input {
-  background: transparent;
-  border: none;
-  outline: none;
-  width: 100%;
-  font-size: 15px;
-  margin-left: 10px;
-}
-.search-icon {
-  font-size: 18px;
-}
-.hero-logo-container img {
-  width: 600px;
-  max-height: auto;
-  height: auto;
-  display: block; 
-  margin: 0 auto
-}
-.hero-text-content h1 {
-  margin-top: -50px;
-  font-family: 'Arial Black', sans-serif;
-  font-size: 38px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-}
-.hero-text-content p {
-  font-size: 18px;
-  font-weight: 400;
-  opacity: 0.9;
-}
-
-
 
 /* ---Content section --- */
 .content-section {
@@ -233,27 +178,6 @@ section {
 .app-container.dark .content-section.grey-bg {
   background-color: #1a1a1a;
 }
-/* Home/Hero section */
-.hero-section{
-   background: radial-gradient(circle, #4a4a4a 0%, #121212 100%);
-}
-.search-container{
-    background: rgba(0, 0, 0, 0.5);
-  border: 1.5px solid #f1b900;
-}
-.search-container input{
-    color: #fff;
-}
-.search-icon{
-    color: #f1b900;
-}
-.hero-text-content h1{
-    color: #f1b900;
-}
-.hero-text-content p {
-    color: #fff;
-}
-
 
 
 
@@ -288,36 +212,6 @@ section {
   background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-/* Home/Hero section */
-.app-container.light .hero-section {
-    background: linear-gradient(
-        180deg, 
-        rgba(217, 165, 26, 0) 0%,    
-        rgba(217, 165, 26, 0.5) 100% 
-    ) !important;
-}
-.app-container.light .search-container {
-    background: rgba(180, 180, 180, 0.4) !important; 
-    border: 1.5px solid #C09B3E !important; 
-    backdrop-filter: blur(5px); 
-}
-.app-container.light .search-icon {
-    color: #f1b900 !important;
-}
-.app-container.light .search-container input {
-    color: #444 !important; 
-}
-.app-container.light .search-container input::placeholder {
-    color: #1c1b1b !important;
-    opacity: 0.8;
-}
-.app-container.light .hero-text-content h1{
-    color: #fff;
-}
-.app-container.light .hero-text-content p {
-    color: #fff;
-}
-
 
 
 
