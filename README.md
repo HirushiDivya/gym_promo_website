@@ -2,11 +2,13 @@ Fitness Center - Premier Fitness Branding Website
 A high-performance, fully responsive promotional website built for a local fitness brand. This project features a modern UI with dynamic theme switching, smooth scroll navigation, and integrated communication tools.
 
 🚀 Key Features
-Adaptive Theme Support: Includes a Dark/Light Mode toggle with persistent UI states for better user experience.
-Dynamic Navigation: Auto-highlighting navigation bar that tracks the user's scroll position across sections (Home, About, Features, Plan, Contact).
-Smart Form Validation: Real-time validation for contact inquiries using SweetAlert2 for professional feedback.
-Direct WhatsApp Integration: Automates message formatting to send user inquiries directly to the gym's official WhatsApp number.
-Fully Responsive: Optimized for Mobile, Tablet, and Desktop using CSS Grid and Flexbox.
+**Adaptive Theme Support:** Includes a Dark/Light Mode toggle with persistent UI states for better user experience.
+
+**Dynamic Navigation: **Auto-highlighting navigation bar that tracks the user's scroll position across sections (Home, About, Features, Plan, Contact).
+
+**Smart Form Validation:** Real-time validation for contact inquiries using SweetAlert2 for professional feedback.
+**Direct WhatsApp Integration:** Automates message formatting to send user inquiries directly to the gym's official WhatsApp number.
+**Fully Responsive:** Optimized for Mobile, Tablet, and Desktop using CSS Grid and Flexbox.
 
 🛠️ Tech Stack
 Frontend: React.js (Functional Components & Hooks)
