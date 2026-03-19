@@ -7,7 +7,9 @@ A high-performance, fully responsive promotional website built for a local fitne
 **Dynamic Navigation: **Auto-highlighting navigation bar that tracks the user's scroll position across sections (Home, About, Features, Plan, Contact).
 
 **Smart Form Validation:** Real-time validation for contact inquiries using SweetAlert2 for professional feedback.
+
 **Direct WhatsApp Integration:** Automates message formatting to send user inquiries directly to the gym's official WhatsApp number.
+
 **Fully Responsive:** Optimized for Mobile, Tablet, and Desktop using CSS Grid and Flexbox.
 
 🛠️ Tech Stack
